@@ -25,3 +25,29 @@ class Solution {
 }
 
 //optimized - O(N)
+
+class Solution2 {
+  List<int> findThePrefixCommonArray(List<int> A, List<int> B) {
+    Set<int> seen = {};
+    List<int> resC = [];
+    int count = 0;
+
+    for (int i = 0; i < A.length; i++) {
+      if (seen.contains(A[i])) {
+        count++;
+      } else {
+        seen.add(A[i]);
+      }
+
+      if (seen.contains(B[i])) {
+        count++;
+      } else {
+        seen.add(B[i]);
+      }
+
+      resC.add(count);
+    }
+
+    return resC;
+  }
+}
