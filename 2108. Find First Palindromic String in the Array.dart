@@ -13,3 +13,28 @@ class Solution1 {
     
   }
 }
+
+//optimized solutions 
+
+class Solution2 {
+    bool isPalindrome(String word){
+        int left = 0;
+        int right = word.length -1;
+        while(left<right){
+            if(word[left] != word[right]) return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+  String firstPalindrome(List<String> words) {
+    for(String word in words){
+        if(isPalindrome(word)){
+            return word;
+           
+        }
+    }
+    return '';
+    
+  }
+}
