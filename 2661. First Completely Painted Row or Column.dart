@@ -45,3 +45,42 @@ class Solution {
     return minIndex;
   }
 }
+
+//T.C : O(m*n)
+//S.C : O((m*n) + m + n)
+class Solution2 {
+  int firstCompleteIndex(List<int> arr, List<List<int>> mat) {
+    int m = mat.length;
+    int n = mat[0].length;
+
+    // Map to store value to cell-coordinate [row, col]
+    Map<int, List<int>> mp = {};
+
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        int val = mat[i][j];
+        mp[val] = [i, j];
+      }
+    }
+
+    // Arrays to track painted cells in each row and column
+    List<int> rowCountPaint = List.filled(m, 0);  // [i] = how many painted in row i
+    List<int> colCountPaint = List.filled(n, 0);  // [i] = how many painted in col i
+
+    for (int i = 0; i < arr.length; i++) {
+      int val = arr[i];
+      var cell = mp[val]!;
+      int row = cell[0];
+      int col = cell[1];
+
+      rowCountPaint[row]++;
+      colCountPaint[col]++;
+
+      if (rowCountPaint[row] == n || colCountPaint[col] == m) {
+        return i;  // Return the index when row or column is fully painted
+      }
+    }
+
+    return -1;  // If no row or column is completely painted
+  }
+}
