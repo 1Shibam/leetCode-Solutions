@@ -85,7 +85,7 @@ class Solution2 {
   }
 }
 
-class Solution {
+class Solution3 {
   bool checkRowPainted(List<List<int>> mat, int row) {
     for (int col = 0; col < mat[0].length; col++) {
       if (mat[row][col] > 0) { // not painted
